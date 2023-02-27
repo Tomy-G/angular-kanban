@@ -1,0 +1,27 @@
+<div>
+  <label for="name">Nombre de la tarea: </label>
+  <input id="name" [(ngModel)]="name" placeholder="name" />
+  <label for="estimation">Estimacion: </label>
+  <input id="estimation" [(ngModel)]="estimation" placeholder="estimation" />
+  <button (click)="addTask()">Enviar</button>
+</div>
+<div class="example-container">
+  <div id="header">
+    {{ namee }}
+  </div>
+  <!-- <a routerLink="/addtask/{{param}}">dadsasdaas</a> -->
+  <div
+    cdkDropList
+    class="example-list"
+    [cdkDropListData]="tasks"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-task
+      class="example-box"
+      *ngFor="let item of tasks"
+      [name]="item.name"
+      [estimation]="item.estimation"
+      cdkDrag
+    ></app-task>
+  </div>
+</div>
